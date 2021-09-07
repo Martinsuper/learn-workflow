@@ -35,4 +35,4 @@ jobs:
           subject: 北京 ${{env.REPORT_DATE}} 天气预报
           html_body: file://beijing
           to: martindly@163.com
-          from: GitHub Actions
+          from: younote 天气 服务
