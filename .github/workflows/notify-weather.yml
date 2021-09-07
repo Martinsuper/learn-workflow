@@ -1,0 +1,38 @@
+name: "Notify Weather"
+on:
+  push:
+  schedule:
+    - cron: "0 6 * * *"
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout codes"
+        uses: actions/checkout@v2
+      - name: "Get Weather"
+        run: bash ./weather.sh
+      - name: "Get Date"
+        run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y年%m月%d日')" >> $GITHUB_ENV
+      - name: "Send shanghai"
+        uses: dawidd6/action-send-mail@master
+        with:
+          server_address: smtp.163.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: 上海 ${{env.REPORT_DATE}} 天气预报
+          html_body: file://shanghai
+          to: duanyu@martind.cn
+          from: GitHub Actions
+      - name: "Send mail beijing"
+        uses: dawidd6/action-send-mail@master
+        with:
+          server_address: smtp.163.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: 北京 ${{env.REPORT_DATE}} 天气预报
+          html_body: file://beijing
+          to: martindly@163.com
+          from: GitHub Actions
