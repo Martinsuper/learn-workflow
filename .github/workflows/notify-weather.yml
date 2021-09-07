@@ -24,15 +24,15 @@ jobs:
           subject: 上海 ${{env.REPORT_DATE}} 天气预报
           html_body: file://shanghai
           to: duanyu@martind.cn
-          from: GitHub Actions
-      - name: "Send mail beijing"
-        uses: dawidd6/action-send-mail@master
-        with:
-          server_address: smtp.163.com
-          server_port: 465
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
-          subject: 北京 ${{env.REPORT_DATE}} 天气预报
-          html_body: file://beijing
-          to: martindly@163.com
-          from: younote 天气 服务
+          from: 天气预报
+      # - name: "Send mail beijing"
+      #   uses: dawidd6/action-send-mail@master
+      #   with:
+      #     server_address: smtp.163.com
+      #     server_port: 465
+      #     username: ${{ secrets.MAIL_USERNAME }}
+      #     password: ${{ secrets.MAIL_PASSWORD }}
+      #     subject: 北京 ${{env.REPORT_DATE}} 天气预报
+      #     html_body: file://beijing
+      #     to: martindly@163.com
+      #     from: younote 天气 服务
