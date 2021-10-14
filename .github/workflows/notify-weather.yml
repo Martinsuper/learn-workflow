@@ -1,8 +1,8 @@
 name: "Notify Weather"
 on:
   push:
-  schedule:
-    - cron: "0 6 * * *"
+#   schedule:
+#     - cron: "0 6 * * *"
 
 jobs:
   bot:
